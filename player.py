@@ -5,17 +5,12 @@ class Player:
     def __init__(self, letter):
         self.letter = letter
 
-    def get_move(self, game):
-        pass
-
 class StupidComputerPlayer(Player):
-
     def get_move(self, game):
         square = random.choice(game.poss_moves())
         return square
 
 class HumanPlayer(Player):
-
     def get_move(self, game):
         valid_square = False
         val = None
@@ -46,7 +41,6 @@ class GoodComputerPlayer(Player):
             return {'position': None,
                     'score': state.num_empty_squares() + 1 if other_player == max_player else
                         -1 * (state.num_empty_squares() + 1)}
-
         elif not state.empty_squares():
             return {'position': None, 'score': 0}
 
