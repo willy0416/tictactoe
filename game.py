@@ -100,8 +100,11 @@ def play(game, x_player, o_player, print_game=True):
 if __name__ == '__main__':
     print("Welcome to TicTacToe!")
     time.sleep(1)
+    
     valid_input_1 = False
+    valid_input_2 = False
     polite = False
+    
     while not valid_input_1:
         letter_choice = input("Would you like to move first or second? Respond with 1 or 2: ")
         try:
@@ -116,13 +119,14 @@ if __name__ == '__main__':
             valid_input_1 = True
         except ValueError:
             print("Invalid input. Try again and don't be naughty.")
-    valid_input_2 = False
+    
     while not valid_input_2:
         opp = input("Would you like to play a dumb computer (0), a smart computer (1), or a human (2)? ")
         try:
             int_opp = int(opp)
             if int_opp not in [0, 1, 2]:
                 raise ValueError
+
             if int_opp == 0 and not polite:
                 o_player = StupidComputerPlayer('O')
             elif not int_opp:
@@ -137,24 +141,11 @@ if __name__ == '__main__':
                 o_player = HumanPlayer('O')
             elif int_opp == 2:
                 x_player = HumanPlayer('X')
+            
             valid_input_2 = True
         
         except ValueError:
             print("Give a number 0-2 ya doofus.")
 
-
-
-        
-    
-    # while not valid_square:
-    #     square = input(f"{self.letter}'s turn. Input move (0-8): ")
-    #     try:
-    #         val = int(square)
-    #         if val not in game.poss_moves():
-    #             raise ValueError
-    #         valid_square = True
-    #     except ValueError:
-    #         print("Invalid square. Try again.")
-    # return val
     t = TicTacToe()
     play(t, x_player, o_player, print_game=True)
